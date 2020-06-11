@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
-class Test1 extends StatelessWidget {
-  myfunc(int nb) {
-    print(nb);
+class Test1 extends StatefulWidget {
+
+  @override
+  Test1State createState() => Test1State();
+  
+  
+}
+
+class Test1State extends State<Test1> {
+  addNumber(String fullStrNb,String strNbToAdd) {
+    setState(() {      
+      String newNb = fullStrNb + strNbToAdd;
+      _numberStringProposition = newNb;
+    });
   }
+
+  int _numberToFind = Random().nextInt(100);
+  String _numberStringProposition = "";
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: Column(  
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[ // the column widget uses the children property
             Container( // Display Cont
@@ -17,13 +32,15 @@ class Test1 extends StatelessWidget {
               ),
               alignment: Alignment.bottomRight, // Aligning the text to the bottom right of our display screen
               color: Colors.white, // Seting the background color of the container
-              child: Text(
-                "0",
-                style: TextStyle( // Styling the text
-                  fontSize: 50.0,
-                  color: Colors.black
+              child: Center(
+                child: Text(
+                  '$_numberStringProposition',
+                  style: TextStyle( // Styling the text
+                    fontSize: 70.0,
+                    color: Colors.black
+                  ),
+                  textAlign: TextAlign.right,
                 ),
-                textAlign: TextAlign.right,
               ),
             ),
             Container(
@@ -36,28 +53,28 @@ class Test1 extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                      _button("1", () => print("C")), // using custom widget _button
-                      _button("2", () => print("0")),
-                      _button("3", () => print("=")),              
+                      _button("1", () => addNumber(_numberStringProposition, "1")), // using custom widget _button
+                      _button("2", () => addNumber(_numberStringProposition, "2")),
+                      _button("3", () => addNumber(_numberStringProposition, "3")),              
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                      _button("4", () => print("C")), // using custom widget _button
-                      _button("5", () => print("0")),
-                      _button("6", () => print("=")),           
+                      _button("4", () => addNumber(_numberStringProposition, "4")), // using custom widget _button
+                      _button("5", () => addNumber(_numberStringProposition, "5")),
+                      _button("6", () => addNumber(_numberStringProposition, "6")),           
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                      _button("7", () => print("C")), // using custom widget _button
-                      _button("8", () => print("0")),
-                      _button("9", () => print("=")),           
+                      _button("7", () => addNumber(_numberStringProposition, "7")), // using custom widget _button
+                      _button("8", () => addNumber(_numberStringProposition, "8")),
+                      _button("9", () => addNumber(_numberStringProposition, "9")),           
                     ],
                   ),
-                  _button("0", () => print("=")),    
+                  _button("0", () => addNumber(_numberStringProposition, "0")),    
                 ]
               )
             )
@@ -68,11 +85,14 @@ class Test1 extends StatelessWidget {
 
   Widget _button (String number, Function() f){ // Creating a method of return type Widget with number and function f as a parameter
     return MaterialButton(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(180)
+      ),
       height: 100.0,
       child: Text(number,
       style:  TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0)),
       textColor: Colors.black,
-      color: Colors.grey[100],
+      color: Colors.green[200],
       onPressed: f,
     );
   }
