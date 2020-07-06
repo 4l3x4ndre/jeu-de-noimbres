@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
-import './test1.dart';
+import 'game.dart';
 
 void main() {
   runApp(MyApp());
@@ -59,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
         //   title: Text(widget.title),
         // ),
         body: Center(
-            // child: Test1()
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -133,7 +132,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Test1(
+                                        builder: (context) => Game(
                                             level: index,
                                             updateScoresHomeScreen: _getAttemps,
                                             levelColor: Colors.indigo[

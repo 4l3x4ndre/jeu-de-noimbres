@@ -4,14 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math';
 
-class Test1 extends StatefulWidget {
+class Game extends StatefulWidget {
   final int level;
   final updateScoresHomeScreen;
   final levelColor;
   final int maxNumber;
   final String levelNumbers;
 
-  const Test1(
+  const Game(
       {Key key,
       this.level,
       this.updateScoresHomeScreen,
@@ -21,10 +21,10 @@ class Test1 extends StatefulWidget {
       : super(key: key);
 
   @override
-  Test1State createState() => Test1State();
+  GameState createState() => GameState();
 }
 
-class Test1State extends State<Test1> {
+class GameState extends State<Game> {
   @override
   void initState() {
     print("e");
@@ -51,8 +51,7 @@ class Test1State extends State<Test1> {
                   'Level: ' + widget.levelNumbers,
                   style: TextStyle(
                       fontSize: MediaQuery.of(context).size.height / 20,
-                      color: Colors.indigo[300] //Hexcolor('#546ae8')
-                      ),
+                      color: Colors.indigo[300]),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -72,7 +71,7 @@ class Test1State extends State<Test1> {
                             color: Colors.black.withOpacity(.3),
                             spreadRadius: 10,
                             blurRadius: 20,
-                            offset: Offset(0, 10), // changes position of shadow
+                            offset: Offset(0, 10),
                           ),
                         ]),
                     child: MaterialButton(
@@ -86,7 +85,7 @@ class Test1State extends State<Test1> {
                         size: MediaQuery.of(context).size.height / 30,
                       ),
                       textColor: Colors.black,
-                      color: Hexcolor('#90e1fd'), //Colors.lightBlue[700],
+                      color: Hexcolor('#90e1fd'),
                       onPressed: () {
                         widget.updateScoresHomeScreen();
                         Navigator.pop(context);
@@ -100,15 +99,11 @@ class Test1State extends State<Test1> {
           Container(
             constraints: BoxConstraints.expand(
                 height: MediaQuery.of(context).size.height / 10),
-            // color: Colors.white,
             alignment: Alignment.center,
             child: Center(
               child: Text(
                 '$_numberStringProposition',
-                style: TextStyle(
-                    fontSize: 70.0,
-                    color: Colors.indigo[300] //Hexcolor('#546ae8')
-                    ),
+                style: TextStyle(fontSize: 70.0, color: Colors.indigo[300]),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -315,14 +310,12 @@ class Test1State extends State<Test1> {
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
-        // return object of type Dialog
         return Dialog(
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
             elevation: 0,
             backgroundColor: Colors.transparent,
             child: Container(
-              //height: MediaQuery.of(context).size.height / 2.2,
               width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
                   color: Colors.indigoAccent,
@@ -331,7 +324,6 @@ class Test1State extends State<Test1> {
                       topLeft: Radius.circular(12),
                       topRight: Radius.circular(12))),
               child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.spaceAround,
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
@@ -340,14 +332,7 @@ class Test1State extends State<Test1> {
                         padding: const EdgeInsets.all(12.0),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(180.0),
-                            child: _popupImage(win)
-                            // Image.asset(
-                            //   'assets/images/rocket_logo.png',
-                            //   height: MediaQuery.of(context).size.width / 4,
-                            //   width: MediaQuery.of(context).size.width / 4,
-                            //   fit: BoxFit.fitHeight,
-                            // ),
-                            ),
+                            child: _popupImage(win)),
                       ),
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
@@ -392,19 +377,6 @@ class Test1State extends State<Test1> {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          // RaisedButton(
-                          //   onPressed: () {
-                          //     Navigator.push(
-                          //         context,
-                          //         MaterialPageRoute(
-                          //             builder: (context) => MyHomePage()));
-                          //   },
-                          //   child: Icon(
-                          //     Icons.check_circle_outline,
-                          //     color: Colors.white,
-                          //     size: MediaQuery.of(context).size.height / 30,
-                          //   ),
-                          // ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: 16.0),
                             child: MaterialButton(
@@ -475,7 +447,7 @@ class Test1State extends State<Test1> {
                 color: Colors.black.withOpacity(.3),
                 spreadRadius: 10,
                 blurRadius: 20,
-                offset: Offset(0, 10), // changes position of shadow
+                offset: Offset(0, 10),
               ),
             ]),
         child: MaterialButton(
@@ -504,14 +476,13 @@ class Test1State extends State<Test1> {
               color: Colors.black.withOpacity(.3),
               spreadRadius: 10,
               blurRadius: 20,
-              offset: Offset(0, 10), // changes position of shadow
+              offset: Offset(0, 10),
             ),
           ]),
       child: MaterialButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(180)),
         height: MediaQuery.of(context).size.height / 10,
         minWidth: MediaQuery.of(context).size.width / 5,
-        // minWidth: MediaQuery.of(context).size.width*0.50,
         child: Icon(
           Icons.check_circle_outline,
           color: Hexcolor('#2a5700'),
@@ -536,7 +507,7 @@ class Test1State extends State<Test1> {
               color: Colors.black.withOpacity(.3),
               spreadRadius: 10,
               blurRadius: 20,
-              offset: Offset(0, 10), // changes position of shadow
+              offset: Offset(0, 10),
             ),
           ]),
       child: MaterialButton(
