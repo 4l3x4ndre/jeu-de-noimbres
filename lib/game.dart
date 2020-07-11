@@ -287,7 +287,7 @@ class GameState extends State<Game> {
     } else if (_numberToFind > int.parse(_numberStringProposition)) {
       _t = "too small";
     } else {
-      _t = "too hight";
+      _t = "too high";
     }
     setState(() {
       _tips = _t;
